@@ -2,7 +2,7 @@ name:                wikigen
 version:             0.1.0.0
 synopsis:            A minimal static wiki generator
 description:         Please see README.md
-homepage:            https://github.com/ibabushkin/wikigen
+homepage:            https://github.com/Hackerswiki/wikigen
 license:             BSD3
 license-file:        LICENSE
 author:              Inokentiy Babushkin
