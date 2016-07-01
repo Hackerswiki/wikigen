@@ -1,10 +1,14 @@
 module Wikigen where
 
 import Data.Text.Lazy (Text)
+import qualified Data.Text.Lazy.IO as TI
 import qualified Data.Text as ST
 import qualified Data.Text.Encoding as STE
 
+import System.FilePath (replaceExtension, (</>))
+
 import Text.Blaze.Html (Html)
+import Text.Blaze.Html.Renderer.Text
 
 import Text.Highlighter (lexerFromLanguage, runLexer)
 import Text.Highlighter.Formatters.Html (format)
@@ -35,3 +39,9 @@ indent :: [Block [Inline]] -> [Block [Inline]]
 indent = map transform
     where transform (BlockHeading n i) = BlockHeading (n+1) i
           transform b = b
+
+-- | transform a markdown file to a HTML file
+transformFile :: FilePath -> FilePath -> IO ()
+transformFile fN dir = 
+    ((renderHtml . mdToHtml) <$> TI.readFile fN) >>= TI.writeFile fN'
+    where fN' = dir </> replaceExtension fN "html"
