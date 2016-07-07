@@ -15,7 +15,10 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Wikigen
+  exposed-modules:     Markdown
+                     , Template
+                     , Types
+                     , Wikigen
   build-depends:       base >= 4.7 && < 5
                      , markdown >= 0.1.14
                      , text >= 1.2.2.1
