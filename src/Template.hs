@@ -10,8 +10,8 @@ import Text.Blaze.Html5.Attributes as A
 import Types
 
 -- | take an article's HTML and wrap it in a well-formed page
-articlePage :: Text -> Html -> Html
-articlePage name content = docTypeHtml $
+articlePage :: Article -> Html
+articlePage (Article name content) = docTypeHtml $
     H.head $ do
         H.title $ toHtml name
         body $ do

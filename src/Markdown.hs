@@ -1,6 +1,8 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Markdown where
 
 import Data.Text.Lazy (Text)
+import qualified Data.Text.Lazy as LT
 import qualified Data.Text.Lazy.IO as TI
 import qualified Data.Text as ST
 import qualified Data.Text.Encoding as STE
@@ -17,13 +19,19 @@ import Text.Markdown
 import Text.Markdown.Block (Block(..))
 import Text.Markdown.Inline (Inline)
 
+import Types
+
 -- | generate the HTML for the markdown of an article
-parseArticle :: Text -> Html
-parseArticle = markdown settings
+parseArticle :: Text -> Article
+parseArticle input =
+    Article clean (markdown settings input)
     where settings = def { msBlockCodeRenderer = renderCode
                          , msBlockFilter = indent
                          , msAddHeadingId = True
                          }
+          clean | "#" `LT.isPrefixOf` input =
+              LT.tail $ LT.takeWhile (/= ' ') input
+                | otherwise = input
 
 -- | render codeblocks to colorful HTML
 renderCode :: Maybe ST.Text -> (ST.Text, Html) -> Html

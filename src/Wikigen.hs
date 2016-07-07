@@ -17,11 +17,12 @@ import Text.Markdown
 import Text.Markdown.Block (Block(..))
 import Text.Markdown.Inline (Inline)
 
+import Template
 import Types
 import Markdown
 
 -- | transform a markdown file to a HTML file
 transformFile :: FilePath -> FilePath -> IO ()
-transformFile fN dir = 
-    ((renderHtml . parseArticle) <$> TI.readFile fN) >>= TI.writeFile fN'
+transformFile fN dir = ((renderHtml . articlePage . parseArticle) <$>
+    TI.readFile fN) >>= TI.writeFile fN'
     where fN' = dir </> replaceExtension fN "html"
