@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Markdown where
+module Text.Wikigen.Markdown where
 
 import Data.Text.Lazy (Text)
 import qualified Data.Text.Lazy as LT
@@ -19,7 +19,7 @@ import Text.Markdown
 import Text.Markdown.Block (Block(..))
 import Text.Markdown.Inline (Inline)
 
-import Types
+import Text.Wikigen.Types
 
 -- | generate the HTML for the markdown of an article
 parseArticle :: Text -> Article

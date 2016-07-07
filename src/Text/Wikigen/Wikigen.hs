@@ -1,4 +1,4 @@
-module Wikigen where
+module Text.Wikigen.Wikigen where
 
 import Data.Text.Lazy (Text)
 import qualified Data.Text.Lazy.IO as TI
@@ -17,9 +17,9 @@ import Text.Markdown
 import Text.Markdown.Block (Block(..))
 import Text.Markdown.Inline (Inline)
 
-import Template
-import Types
-import Markdown
+import Text.Wikigen.Template
+import Text.Wikigen.Types
+import Text.Wikigen.Markdown
 
 -- | transform a markdown file to a HTML file
 transformFile :: FilePath -> FilePath -> IO ()

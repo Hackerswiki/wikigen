@@ -1,4 +1,4 @@
-module Types where
+module Text.Wikigen.Types where
 
 import Data.Text.Lazy (Text)
 

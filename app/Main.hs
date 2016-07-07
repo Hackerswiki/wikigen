@@ -1,6 +1,6 @@
 module Main where
 
-import Wikigen
+import Text.Wikigen.Wikigen
 
 main :: IO ()
 main = pure ()
