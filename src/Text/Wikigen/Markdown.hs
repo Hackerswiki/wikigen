@@ -3,14 +3,10 @@ module Text.Wikigen.Markdown where
 
 import Data.Text.Lazy (Text)
 import qualified Data.Text.Lazy as LT
-import qualified Data.Text.Lazy.IO as TI
 import qualified Data.Text as ST
 import qualified Data.Text.Encoding as STE
 
-import System.FilePath (replaceExtension, (</>))
-
-import Text.Blaze.Html5 (Html)
-import Text.Blaze.Html.Renderer.Text
+import Text.Blaze.Html (Html)
 
 import Text.Highlighter (lexerFromLanguage, runLexer)
 import Text.Highlighter.Formatters.Html (format)
